@@ -1,0 +1,9 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "lambda-weather-app"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1r147pqq7753h"
+s3_prefix = "lambda-weather-app"
+region = "ap-southeast-1"
+capabilities = "CAPABILITY_IAM"

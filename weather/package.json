@@ -1,0 +1,10 @@
+{
+  "name": "lambda_weather_app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Krizza Bullecer",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}

@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: lambda-weather-app
+Globals:
+  Function:
+    Timeout: 100
+  Api:
+    Cors:
+      AllowHeaders: '''Content-Type'''
+      AllowOrigin: '''*'''
+Resources:
+  WeatherFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: WeatherFunction
+      Handler: app.handler
+      Runtime: nodejs12.x
+      Events:
+        HelloWorld:
+          Type: Api
+          Properties:
+            Path: /location
+            Method: GET
+Outputs:
+  WeatherApi:
+    Description: API Gateway endpoint URL for Prod stage for Weather Function
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/location/
+  WeatherFunctionIamRole:
+    Description: Implicit IAM Role created for Weather Function
+    Value:
+      Fn::GetAtt:
+      - WeatherFunctionRole
+      - Arn
